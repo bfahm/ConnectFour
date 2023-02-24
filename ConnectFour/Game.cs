@@ -4,9 +4,10 @@
     {
         public int SizeX { get; set; }
         public int SizeY { get; set; }
+        public int ConnectTarget { get; set; }
         public List<List<int>> State { get; set; }
 
-        public Game(int gameSizeX, int gameSizeY) 
+        public Game(int gameSizeX, int gameSizeY, int connectTarget = 4) 
         {
             var columns = new List<List<int>>();
             for (int y = 0; y < gameSizeY; y++)
@@ -18,38 +19,39 @@
             SizeX = gameSizeX;
             SizeY = gameSizeY;
             State = columns;
+            ConnectTarget = connectTarget;
         }
 
-        public string GetDiagonalArround(Point originPoint, int arround = 4)
+        public string GetDiagonalArround(Point originPoint)
         {
             return IterateArround(originPoint,
                                   originPoint.GetDiagonalBottomLeft,
                                   originPoint.GetDiagonalTopRight,
-                                  arround);
+                                  ConnectTarget);
         }
 
-        public string GetReverseDiagonalArround(Point originPoint, int arround = 4)
+        public string GetReverseDiagonalArround(Point originPoint)
         {
             return IterateArround(originPoint,
                                   originPoint.GetDiagonalBottomRight,
                                   originPoint.GetDiagonalTopLeft,
-                                  arround); ;
+                                  ConnectTarget); ;
         }
 
-        public string GetRowArround(Point originPoint, int arround = 4)
+        public string GetRowArround(Point originPoint)
         {
             return IterateArround(originPoint,
                                   originPoint.GetRowRight,
                                   originPoint.GetRowLeft,
-                                  arround);
+                                  ConnectTarget);
         }
 
-        public string GetColumnArround(Point originPoint, int arround = 4)
+        public string GetColumnArround(Point originPoint)
         {
             return IterateArround(originPoint,
                                   originPoint.GetColumnDown,
                                   originPoint.GetColumnUp,
-                                  arround);
+                                  ConnectTarget);
         }
 
         private string IterateArround(Point originPoint,
