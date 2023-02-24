@@ -1,9 +1,9 @@
 ﻿using ConnectFour;
 
-//Console.WriteLine("Please provide the size of the game, X:");
-var gameSizeX = 10; //int.Parse(Console.ReadLine());
-//Console.WriteLine("Please ddfgds the size of the game, Y:");
-var gameSizeY = 10; //int.Parse(Console.ReadLine());
+Console.WriteLine("Please provide the size of the game, X:");
+var gameSizeX = int.Parse(Console.ReadLine());
+Console.WriteLine("Please provide the size of the game, Y:");
+var gameSizeY = int.Parse(Console.ReadLine());
 
 const char PLAYER_1_ID = '1';
 const char PLAYER_2_ID = '2';
@@ -15,6 +15,7 @@ void switchTurn() => currentTurn = currentTurn == PLAYER_2_ID ? PLAYER_1_ID : PL
 
 var someoneWon = false;
 
+Console.Clear();
 Console.WriteLine();
 while (!someoneWon)
 {
