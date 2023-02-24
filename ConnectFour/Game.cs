@@ -22,43 +22,22 @@
 
         public string GetDiagonalArround(Point originPoint, int arround = 2)
         {
-            string diagonal = "";
-
-            //Downward Iteration
-            for (int i = arround; i >= 1; i--)
-            {
-                var accessPoint = originPoint.GetDiagonalBottomLeft(i);
-
-                if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
-                {
-                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
-                }
-            }
-
-            diagonal += GetItemAtCoordinates(originPoint.X, originPoint.Y).ToString();
-
-            //Upward Iteration
-            for (int i = 1; i <= arround; i++)
-            {
-                var accessPoint = originPoint.GetDiagonalTopRight(i);
-
-                if(IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
-                {
-                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
-                }
-            }
-
-            return diagonal;
+            return IterateArround(originPoint, originPoint.GetDiagonalBottomLeft, originPoint.GetDiagonalTopRight, arround);
         }
 
         public string GetReverseDiagonalArround(Point originPoint, int arround = 2)
+        {
+            return IterateArround(originPoint, originPoint.GetDiagonalBottomRight, originPoint.GetDiagonalTopLeft, arround); ;
+        }
+
+        private string IterateArround(Point originPoint, Func<int, Point> downwardIterator, Func<int, Point> upwardIterator, int arround)
         {
             string diagonal = "";
 
             //Downward Iteration
             for (int i = arround; i >= 1; i--)
             {
-                var accessPoint = originPoint.GetDiagonalBottomRight(i);
+                var accessPoint = downwardIterator(i);
 
                 if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
@@ -71,7 +50,7 @@
             //Upward Iteration
             for (int i = 1; i <= arround; i++)
             {
-                var accessPoint = originPoint.GetDiagonalTopLeft(i);
+                var accessPoint = upwardIterator(i);
 
                 if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
