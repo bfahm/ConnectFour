@@ -20,34 +20,35 @@
             State = columns;
         }
 
-        public void PrintDiagonalArround(Point originPoint)
+        public string GetDiagonalArround(Point originPoint, int arround = 2)
         {
-            const int arround = 2;
+            string diagonal = "";
 
-            //Forward Iteration
-            for (int i = 0; i <= arround; i++)
-            {
-                var accessPoint = originPoint.GetDiagonalTopRight(i);
-
-                if(IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
-                {
-                    Console.Write(GetItemAtCoordinates(accessPoint.X, accessPoint.Y));
-                    Console.Write("-");
-                }
-            }
-            Console.WriteLine();
-
-            //Backward Iteration
-            for (int i = arround; i >= 0; i--)
+            //Downward Iteration
+            for (int i = arround; i >= 1; i--)
             {
                 var accessPoint = originPoint.GetDiagonalBottomLeft(i);
 
                 if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
-                    Console.Write(GetItemAtCoordinates(accessPoint.X, accessPoint.Y));
-                    Console.Write("-");
+                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
                 }
             }
+
+            diagonal += GetItemAtCoordinates(originPoint.X, originPoint.Y).ToString();
+
+            //Upward Iteration
+            for (int i = 1; i <= arround; i++)
+            {
+                var accessPoint = originPoint.GetDiagonalTopRight(i);
+
+                if(IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
+                {
+                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
+                }
+            }
+
+            return diagonal;
         }
 
         public int? GetItemAtCoordinates(int x, int y)
