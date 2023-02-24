@@ -17,6 +17,21 @@
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            PrintColumnNumbers(game);
+        }
+
+        static void PrintColumnNumbers(Game game)
+        {
+            for(int i = 0 ;i < game.SizeX; i++)
+            {
+                Console.Write(i);
+                Console.Write(' ');
+            }
+            Console.Write("\t\t << Column Numbers");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         static void PrintCurrentValue(Game game, int x, int y)
