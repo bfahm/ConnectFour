@@ -37,22 +37,7 @@ GamePrinter.Print(game, onlyCoordinates: true);
 Console.WriteLine();
 Console.WriteLine();
 
-var candidate1 = game.GetDiagonalArround(new Point(1, 1));
-var candidate1IsWin = WinHelper.DetermineIsWinner(candidate1, '1');
-Console.WriteLine(candidate1);
-Console.WriteLine(candidate1IsWin);
-var candidate2 = game.GetReverseDiagonalArround(new Point(1, 1));
-var candidate2IsWin = WinHelper.DetermineIsWinner(candidate2, '1');
-Console.WriteLine(candidate2);
-Console.WriteLine(candidate2IsWin);
-var candidate3 = game.GetColumnArround(new Point(1, 1));
-var candidate3IsWin = WinHelper.DetermineIsWinner(candidate3, '1');
-Console.WriteLine(candidate3);
-Console.WriteLine(candidate3IsWin);
-var candidate4 = game.GetRowArround(new Point(1, 1));
-var candidate4IsWin = WinHelper.DetermineIsWinner(candidate4, '1');
-Console.WriteLine(candidate4);
-Console.WriteLine(candidate4IsWin);
+WinHelper.DetermineWinningState(game, new Point(1, 1), '1');
 
 Console.WriteLine();
 Console.WriteLine();
