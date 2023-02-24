@@ -18,7 +18,6 @@
                 Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine();
             PrintColumnNumbers(game);
         }
 
