@@ -51,6 +51,37 @@
             return diagonal;
         }
 
+        public string GetReverseDiagonalArround(Point originPoint, int arround = 2)
+        {
+            string diagonal = "";
+
+            //Downward Iteration
+            for (int i = arround; i >= 1; i--)
+            {
+                var accessPoint = originPoint.GetDiagonalBottomRight(i);
+
+                if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
+                {
+                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
+                }
+            }
+
+            diagonal += GetItemAtCoordinates(originPoint.X, originPoint.Y).ToString();
+
+            //Upward Iteration
+            for (int i = 1; i <= arround; i++)
+            {
+                var accessPoint = originPoint.GetDiagonalTopLeft(i);
+
+                if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
+                {
+                    diagonal += GetItemAtCoordinates(accessPoint.X, accessPoint.Y).ToString();
+                }
+            }
+
+            return diagonal;
+        }
+
         public int? GetItemAtCoordinates(int x, int y)
         {
             var currentColumn = State?[x];

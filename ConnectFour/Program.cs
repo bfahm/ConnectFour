@@ -37,7 +37,8 @@ GamePrinter.Print(game, onlyCoordinates: true);
 Console.WriteLine();
 Console.WriteLine();
 
-Console.WriteLine(game.GetDiagonalArround(new Point(3, 1)));
+Console.WriteLine(game.GetDiagonalArround(new Point(2, 2)));
+Console.WriteLine(game.GetReverseDiagonalArround(new Point(2, 2)));
 
 Console.WriteLine();
 Console.WriteLine();
