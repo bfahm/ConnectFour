@@ -16,40 +16,9 @@ columns[0].Add(PLAYER_1_ID);
 columns[1].Add(PLAYER_2_ID);
 columns[0].Add(PLAYER_1_ID);
 
-PrintGame(game, onlyCoordinates: false);
+GamePrinter.Print(game, onlyCoordinates: false);
 Console.WriteLine();
 Console.WriteLine();
-PrintGame(game, onlyCoordinates: true);
+GamePrinter.Print(game, onlyCoordinates: true);
 
-void PrintGame(Game game, bool onlyCoordinates = false)
-{
-    for(int y = game.SizeY - 1; y >= 0; y--)
-    {
-        for (int x = 0; x != game.SizeX; x++)
-        {
-            if (onlyCoordinates)
-                PrintCurrentCoordinate(x, y);
-            else
-                PrintCurrentValue(x, y);
 
-            Console.Write(' ');
-        }
-        Console.WriteLine();
-    }
-}
-
-void PrintCurrentValue(int x, int y)
-{
-    var currentColumn = game.State?[x];
-    var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;
-
-    if (currentItem != null)
-        Console.Write(currentItem);
-    else
-        Console.Write('_');
-}
-
-void PrintCurrentCoordinate(int x, int y)
-{
-    Console.Write($"({x}, {y})");
-}
