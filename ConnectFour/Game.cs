@@ -20,7 +20,7 @@
             State = columns;
         }
 
-        public string GetDiagonalArround(Point originPoint, int arround = 2)
+        public string GetDiagonalArround(Point originPoint, int arround = 4)
         {
             return IterateArround(originPoint,
                                   originPoint.GetDiagonalBottomLeft,
@@ -28,12 +28,28 @@
                                   arround);
         }
 
-        public string GetReverseDiagonalArround(Point originPoint, int arround = 2)
+        public string GetReverseDiagonalArround(Point originPoint, int arround = 4)
         {
             return IterateArround(originPoint,
                                   originPoint.GetDiagonalBottomRight,
                                   originPoint.GetDiagonalTopLeft,
                                   arround); ;
+        }
+
+        public string GetRowArround(Point originPoint, int arround = 4)
+        {
+            return IterateArround(originPoint,
+                                  originPoint.GetRowRight,
+                                  originPoint.GetRowLeft,
+                                  arround);
+        }
+
+        public string GetColumnArround(Point originPoint, int arround = 4)
+        {
+            return IterateArround(originPoint,
+                                  originPoint.GetColumnDown,
+                                  originPoint.GetColumnUp,
+                                  arround);
         }
 
         private string IterateArround(Point originPoint,

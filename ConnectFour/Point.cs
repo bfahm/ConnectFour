@@ -15,5 +15,11 @@
         public Point GetDiagonalBottomLeft(int step) => new Point(X - step, Y - step);
         public Point GetDiagonalTopLeft(int step) => new Point(X - step, Y + step);
         public Point GetDiagonalBottomRight(int step) => new Point(X + step, Y - step);
+
+        public Point GetColumnUp(int step) => new Point(X, Y + step);
+        public Point GetColumnDown(int step) => new Point(X, Y - step);
+
+        public Point GetRowLeft(int step) => new Point(X + step, Y);
+        public Point GetRowRight(int step) => new Point(X - step, Y);
     }
 }
