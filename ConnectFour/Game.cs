@@ -11,7 +11,7 @@
         public Game(int gameSizeX, int gameSizeY, int connectTarget = 4) 
         {
             var columns = new List<List<char>>();
-            for (int y = 0; y < gameSizeY; y++)
+            for (int x = 0; x < gameSizeX; x++)
             {
                 var column = new List<char>();
                 columns.Add(column);
