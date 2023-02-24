@@ -10,7 +10,10 @@
 
         public static bool DetermineWinningState(Game game, Point playedPoint, char playerId)
         {
-            Console.WriteLine($"Player {playerId} played at ({playedPoint.X}, {playedPoint.Y})\t");
+            //Console.Write($"Player {playerId}");
+            //Console.Write($"played at ({playedPoint.X}, {playedPoint.Y})\t");
+            //Console.Write($"\t");
+            //Console.WriteLine();
 
             var diagonalArroundPointCandidate = game.GetDiagonalArround(playedPoint);
             var diagonalArroundPointCandidateIsWin = DetermineIsWinner(diagonalArroundPointCandidate, playerId);
