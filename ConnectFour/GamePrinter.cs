@@ -21,13 +21,8 @@
 
         static void PrintCurrentValue(Game game, int x, int y)
         {
-            var currentColumn = game.State?[x];
-            var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;
-
-            if (currentItem != null)
-                Console.Write(currentItem);
-            else
-                Console.Write('_');
+            var currentItem = game.GetItemAtCoordinates(x, y);
+            Console.Write(currentItem?.ToString() ?? "_");
         }
 
         static void PrintCurrentCoordinate(int x, int y)

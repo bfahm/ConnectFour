@@ -19,5 +19,13 @@
             SizeY = gameSizeY;
             State = columns;
         }
+
+        public int? GetItemAtCoordinates(int x, int y)
+        {
+            var currentColumn = State?[x];
+            var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;
+
+            return currentItem;
+        }
     }
 }
