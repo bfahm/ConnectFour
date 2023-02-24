@@ -22,15 +22,24 @@
 
         public string GetDiagonalArround(Point originPoint, int arround = 2)
         {
-            return IterateArround(originPoint, originPoint.GetDiagonalBottomLeft, originPoint.GetDiagonalTopRight, arround);
+            return IterateArround(originPoint,
+                                  originPoint.GetDiagonalBottomLeft,
+                                  originPoint.GetDiagonalTopRight,
+                                  arround);
         }
 
         public string GetReverseDiagonalArround(Point originPoint, int arround = 2)
         {
-            return IterateArround(originPoint, originPoint.GetDiagonalBottomRight, originPoint.GetDiagonalTopLeft, arround); ;
+            return IterateArround(originPoint,
+                                  originPoint.GetDiagonalBottomRight,
+                                  originPoint.GetDiagonalTopLeft,
+                                  arround); ;
         }
 
-        private string IterateArround(Point originPoint, Func<int, Point> downwardIterator, Func<int, Point> upwardIterator, int arround)
+        private string IterateArround(Point originPoint,
+                                      Func<int, Point> downwardIterator,
+                                      Func<int, Point> upwardIterator,
+                                      int arround)
         {
             string diagonal = "";
 
