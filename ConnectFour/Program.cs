@@ -6,22 +6,49 @@ var gameSizeY = 5; //int.Parse(Console.ReadLine());
 const int PLAYER_1_ID = 1;
 const int PLAYER_2_ID = 2;
 
-var column = new Stack<int>();
-var columns = new List<Stack<int>>();
-columns.AddRange(Enumerable.Repeat(column, gameSizeY));
+var columns = new List<List<int>>();
+for(int y = 0; y < gameSizeY; y++)
+{
+    var column = new List<int>();
+    columns.Add(column);
+}
 
-PrintGame();
 
-void PrintGame()
+columns[0].Add(PLAYER_1_ID);
+columns[1].Add(PLAYER_2_ID);
+columns[0].Add(PLAYER_1_ID);
+
+PrintGame(true);
+
+void PrintGame(bool onlyCoordinates = false)
 {
     for(int y = gameSizeY-1; y >= 0; y--)
     {
         for (int x = 0; x != gameSizeX; x++)
         {
-            //Console.Write('_');
-            Console.Write($"({x}, {y})");
+            if (onlyCoordinates)
+                PrintCurrentCoordinate(x, y);
+            else
+                PrintCurrentValue(x, y);
+
             Console.Write(' ');
         }
         Console.WriteLine();
     }
+}
+
+void PrintCurrentValue(int x, int y)
+{
+    var currentColumn = columns?[x];
+    var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;
+
+    if (currentItem != null)
+        Console.Write(currentItem);
+    else
+        Console.Write('_');
+}
+
+void PrintCurrentCoordinate(int x, int y)
+{
+    Console.Write($"({x}, {y})");
 }
