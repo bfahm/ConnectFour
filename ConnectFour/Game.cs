@@ -37,16 +37,16 @@
         }
 
         private string IterateArround(Point originPoint,
-                                      Func<int, Point> downwardIterator,
-                                      Func<int, Point> upwardIterator,
+                                      Func<int, Point> firstIterator,
+                                      Func<int, Point> secondIterator,
                                       int arround)
         {
             string diagonal = "";
 
-            //Downward Iteration
+            //First Iteration
             for (int i = arround; i >= 1; i--)
             {
-                var accessPoint = downwardIterator(i);
+                var accessPoint = firstIterator(i);
 
                 if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
@@ -56,10 +56,10 @@
 
             diagonal += GetItemAtCoordinates(originPoint.X, originPoint.Y).ToString();
 
-            //Upward Iteration
+            //Second Iteration
             for (int i = 1; i <= arround; i++)
             {
-                var accessPoint = upwardIterator(i);
+                var accessPoint = secondIterator(i);
 
                 if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
