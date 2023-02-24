@@ -2,10 +2,11 @@
 {
     internal class Game
     {
-        public int SizeX { get; set; }
-        public int SizeY { get; set; }
-        public int ConnectTarget { get; set; }
-        public List<List<char>> State { get; set; }
+        public int SizeX { get; }
+        public int SizeY { get; }
+        public int ConnectTarget { get; }
+        
+        private List<List<char>> State;
 
         public Game(int gameSizeX, int gameSizeY, int connectTarget = 4) 
         {
@@ -94,6 +95,11 @@
             var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;
 
             return currentItem;
+        }
+
+        public void PlayAtX(int x, char asPlayer)
+        {
+            State[x].Add(asPlayer);
         }
 
         public int GetPlayedAtY(int x)
