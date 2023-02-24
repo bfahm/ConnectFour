@@ -96,6 +96,12 @@
             return currentItem;
         }
 
+        public int GetPlayedAtY(int x)
+        {
+            var playedColumn = State?[x];
+            return (playedColumn?.Count() - 1) ?? 0;
+        }
+
         private bool IsValidX(int x) => IsValidCoordinate(x, SizeX);
         private bool IsValidY(int y) => IsValidCoordinate(y, SizeY);
 

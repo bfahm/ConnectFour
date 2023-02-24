@@ -10,34 +10,50 @@
 
         public static bool DetermineWinningState(Game game, Point playedPoint, char playerId)
         {
-            Console.Write($"Player {playerId} \t");
+            Console.WriteLine($"Player {playerId} played at ({playedPoint.X}, {playedPoint.Y})\t");
 
             var diagonalArroundPointCandidate = game.GetDiagonalArround(playedPoint);
             var diagonalArroundPointCandidateIsWin = DetermineIsWinner(diagonalArroundPointCandidate, playerId);
-            //Console.WriteLine(diagonalArroundPointCandidate);
-            Console.Write($"Diagonal Win: {diagonalArroundPointCandidateIsWin} \t");
+            Console.Write($"Diagonal Win: {diagonalArroundPointCandidateIsWin}");
+            //Console.Write($"  {diagonalArroundPointCandidate}");
+            Console.Write($"\t");
 
             var reverseDiagonalArroundPointCandidate = game.GetReverseDiagonalArround(playedPoint);
             var reverseDiagonalArroundCandidateIsWin = DetermineIsWinner(reverseDiagonalArroundPointCandidate, playerId);
-            //Console.WriteLine(reverseDiagonalArroundPointCandidate);
             Console.Write($"Reverse Win: {reverseDiagonalArroundCandidateIsWin} \t");
-            
+            //Console.Write($"  {reverseDiagonalArroundPointCandidate}");
+            Console.Write($"\t");
+
             var columnArroundCandidate = game.GetColumnArround(playedPoint);
             var columnArroundCandidateIsWin = DetermineIsWinner(columnArroundCandidate, playerId);
-            //Console.WriteLine(columnArroundCandidate);
             Console.Write($"Column Win: {columnArroundCandidateIsWin} \t");
-            
+            //Console.Write($"  {columnArroundCandidate}");
+            Console.Write($"\t");
+
             var rowArroundPointCandidate = game.GetRowArround(playedPoint);
             var rowArroundPointCandidateIsWin = DetermineIsWinner(rowArroundPointCandidate, playerId);
-            //Console.WriteLine(rowArroundPointCandidate);
             Console.Write($"Row Win: {rowArroundPointCandidateIsWin} \t");
+            //Console.Write($"  {rowArroundPointCandidate}");
+            Console.Write($"\t");
 
             Console.WriteLine();
 
-            return diagonalArroundPointCandidateIsWin
-                   || reverseDiagonalArroundCandidateIsWin
-                   || columnArroundCandidateIsWin
-                   || rowArroundPointCandidateIsWin;
+            var playerWon =  diagonalArroundPointCandidateIsWin
+                               || reverseDiagonalArroundCandidateIsWin
+                               || columnArroundCandidateIsWin
+                               || rowArroundPointCandidateIsWin;
+
+            if (playerWon)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.WriteLine($"Player {playerId} WON!!!");
+                Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
+
+            return playerWon;
         }
     }
 }

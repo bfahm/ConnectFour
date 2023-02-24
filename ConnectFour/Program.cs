@@ -11,33 +11,23 @@ const char PLAYER_2_ID = '2';
 var game = new Game(gameSizeX, gameSizeY);
 var columns = game.State;
 
+var currentTurn = PLAYER_1_ID;
+void switchTurn() => currentTurn = currentTurn == PLAYER_2_ID ? PLAYER_1_ID : PLAYER_2_ID;
 
-columns[0].Add(PLAYER_1_ID);
-columns[1].Add(PLAYER_2_ID);
-columns[0].Add(PLAYER_1_ID);
-columns[1].Add(PLAYER_1_ID);
-columns[2].Add(PLAYER_2_ID);
-columns[2].Add(PLAYER_2_ID);
-columns[2].Add(PLAYER_1_ID);
-columns[3].Add(PLAYER_2_ID);
-columns[3].Add(PLAYER_2_ID);
-columns[3].Add(PLAYER_2_ID);
-columns[3].Add(PLAYER_1_ID);
-columns[4].Add(PLAYER_2_ID);
-columns[4].Add(PLAYER_2_ID);
-columns[4].Add(PLAYER_2_ID);
-columns[4].Add(PLAYER_2_ID);
-columns[4].Add(PLAYER_2_ID);
+var someoneWon = false;
 
-GamePrinter.Print(game, onlyCoordinates: false);
-Console.WriteLine();
-Console.WriteLine();
-GamePrinter.Print(game, onlyCoordinates: true);
+while (!someoneWon)
+{
+    Console.WriteLine($"Player {currentTurn}, select column: ");
+    var playAtX= int.Parse(Console.ReadLine());
+    columns[playAtX].Add(currentTurn);
 
-Console.WriteLine();
-Console.WriteLine();
-
-WinHelper.DetermineWinningState(game, new Point(1, 1), '1');
-
-Console.WriteLine();
-Console.WriteLine();
+    GamePrinter.Print(game, onlyCoordinates: false);
+    Console.WriteLine();
+    Console.WriteLine();
+    someoneWon = WinHelper.DetermineWinningState(game, new Point(playAtX, game.GetPlayedAtY(playAtX)), currentTurn);
+    Console.WriteLine();
+    Console.WriteLine();
+    
+    switchTurn();
+}
