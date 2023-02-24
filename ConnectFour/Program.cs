@@ -38,7 +38,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 //game.PrintDiagonalArround(0, 0);
-game.PrintDiagonalArround(2, 2);
+game.PrintDiagonalArround(new Point(2, 2));
 //game.PrintDiagonalArround(3, 3);
 //game.PrintDiagonalArround(5, 5);
 

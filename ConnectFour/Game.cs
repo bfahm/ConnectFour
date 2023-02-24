@@ -20,19 +20,18 @@
             State = columns;
         }
 
-        public void PrintDiagonalArround(int originX, int originY)
+        public void PrintDiagonalArround(Point originPoint)
         {
             const int arround = 2;
 
             //Forward Iteration
             for (int i = 0; i <= arround; i++)
             {
-                var accessX = originX + i;
-                var accessY = originY + i;
+                var accessPoint = originPoint.GetDiagonalTopRight(i);
 
-                if(IsValidX(accessX) && IsValidY(accessY))
+                if(IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
-                    Console.Write(GetItemAtCoordinates(accessX, accessY));
+                    Console.Write(GetItemAtCoordinates(accessPoint.X, accessPoint.Y));
                     Console.Write("-");
                 }
             }
@@ -41,12 +40,11 @@
             //Backward Iteration
             for (int i = arround; i >= 0; i--)
             {
-                var accessX = originX - i;
-                var accessY = originY - i;
+                var accessPoint = originPoint.GetDiagonalBottomLeft(i);
 
-                if (IsValidX(accessX) && IsValidY(accessY))
+                if (IsValidX(accessPoint.X) && IsValidY(accessPoint.Y))
                 {
-                    Console.Write(GetItemAtCoordinates(accessX, accessY));
+                    Console.Write(GetItemAtCoordinates(accessPoint.X, accessPoint.Y));
                     Console.Write("-");
                 }
             }
