@@ -18,7 +18,7 @@ var someoneWon = false;
 Console.WriteLine();
 while (!someoneWon)
 {
-    GamePrinter.Print(game, onlyCoordinates: false);
+    GamePrinter.Print(game);
     
     Console.WriteLine($"Player {currentTurn}, select column: ");
 
@@ -32,6 +32,9 @@ while (!someoneWon)
     else
     {
         someoneWon = WinHelper.DetermineWinningState(game, new Point((int)playedAtX, game.GetPlayedAtY((int)playedAtX)), currentTurn);
+        if (someoneWon)
+            GamePrinter.Print(game);
+
         switchTurn();
     }
 }

@@ -54,6 +54,8 @@
                 Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.WriteLine($"Player {playerId} WON!!!");
                 Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.WriteLine();
+                Console.WriteLine();
             }
 
             return playerWon;
