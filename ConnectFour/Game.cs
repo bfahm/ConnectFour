@@ -5,14 +5,14 @@
         public int SizeX { get; set; }
         public int SizeY { get; set; }
         public int ConnectTarget { get; set; }
-        public List<List<int>> State { get; set; }
+        public List<List<char>> State { get; set; }
 
         public Game(int gameSizeX, int gameSizeY, int connectTarget = 4) 
         {
-            var columns = new List<List<int>>();
+            var columns = new List<List<char>>();
             for (int y = 0; y < gameSizeY; y++)
             {
-                var column = new List<int>();
+                var column = new List<char>();
                 columns.Add(column);
             }
 
@@ -88,7 +88,7 @@
             return diagonal;
         }
 
-        public int? GetItemAtCoordinates(int x, int y)
+        public char? GetItemAtCoordinates(int x, int y)
         {
             var currentColumn = State?[x];
             var currentItem = currentColumn?.Count() > y ? currentColumn?[y] : null;

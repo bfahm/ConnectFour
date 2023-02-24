@@ -22,7 +22,7 @@
         static void PrintCurrentValue(Game game, int x, int y)
         {
             var currentItem = game.GetItemAtCoordinates(x, y);
-            Console.Write(currentItem?.ToString() ?? "_");
+            Console.Write(currentItem ?? '_');
         }
 
         static void PrintCurrentCoordinate(int x, int y)

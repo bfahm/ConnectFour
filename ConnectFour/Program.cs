@@ -5,8 +5,8 @@ var gameSizeX = 5; //int.Parse(Console.ReadLine());
 //Console.WriteLine("Please ddfgds the size of the game, Y:");
 var gameSizeY = 5; //int.Parse(Console.ReadLine());
 
-const int PLAYER_1_ID = 1;
-const int PLAYER_2_ID = 2;
+const char PLAYER_1_ID = '1';
+const char PLAYER_2_ID = '2';
 
 var game = new Game(gameSizeX, gameSizeY);
 var columns = game.State;
