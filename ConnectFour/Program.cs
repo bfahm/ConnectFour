@@ -1,9 +1,9 @@
 ﻿using ConnectFour;
 
 //Console.WriteLine("Please provide the size of the game, X:");
-var gameSizeX = 5; //int.Parse(Console.ReadLine());
+var gameSizeX = 10; //int.Parse(Console.ReadLine());
 //Console.WriteLine("Please ddfgds the size of the game, Y:");
-var gameSizeY = 5; //int.Parse(Console.ReadLine());
+var gameSizeY = 10; //int.Parse(Console.ReadLine());
 
 const char PLAYER_1_ID = '1';
 const char PLAYER_2_ID = '2';
@@ -15,18 +15,23 @@ void switchTurn() => currentTurn = currentTurn == PLAYER_2_ID ? PLAYER_1_ID : PL
 
 var someoneWon = false;
 
+Console.WriteLine();
 while (!someoneWon)
 {
-    Console.WriteLine($"Player {currentTurn}, select column: ");
-    var playAtX= int.Parse(Console.ReadLine());
-    game.PlayAtX(playAtX, currentTurn);
-
     GamePrinter.Print(game, onlyCoordinates: false);
-    Console.WriteLine();
-    Console.WriteLine();
-    someoneWon = WinHelper.DetermineWinningState(game, new Point(playAtX, game.GetPlayedAtY(playAtX)), currentTurn);
-    Console.WriteLine();
-    Console.WriteLine();
     
-    switchTurn();
+    Console.WriteLine($"Player {currentTurn}, select column: ");
+
+    var playedAtX = game.PlayAtX(Console.ReadLine(), currentTurn);
+    Console.Clear();
+
+    if (playedAtX == null)
+    {
+        Console.WriteLine("Invalid column choice!");
+    }
+    else
+    {
+        someoneWon = WinHelper.DetermineWinningState(game, new Point((int)playedAtX, game.GetPlayedAtY((int)playedAtX)), currentTurn);
+        switchTurn();
+    }
 }

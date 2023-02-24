@@ -97,9 +97,16 @@
             return currentItem;
         }
 
-        public void PlayAtX(int x, char asPlayer)
+        public int? PlayAtX(string? x, char asPlayer)
         {
-            State[x].Add(asPlayer);
+            bool parsed = int.TryParse(x, out int parsedX);
+            if(!parsed || parsedX > SizeX - 1)
+            {
+                return null;
+            }
+            
+            State[parsedX].Add(asPlayer);
+            return parsedX;
         }
 
         public int GetPlayedAtY(int x)
